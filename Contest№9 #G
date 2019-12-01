@@ -1,0 +1,23 @@
+x = []
+y = []
+point = []
+name = []
+quan = 0
+rooms = int(input())
+for i in range(rooms):
+	players = int(input())
+	quan += players
+	for j in range(players):
+		x, y = input().split()
+		point.append(float(x))
+		name.append(y)
+for i in range(len(point)-1):
+        k=i
+        for j in range(i+1, len(point)):
+            if point[k] < point[j]:
+                k = j
+        point[i], point[k] = point[k], point[i]
+        name[i], name[k] = name[k], name[i]
+print(quan)
+for f in range(len(point)):
+	print('%.2f' % point[f], name[f])
