@@ -6,7 +6,7 @@ def bubble_sort(point):
 				name[l+1], name[l] = name[l], name[l+1]
 			elif point[l+1] == point[l]:
 				if name[l] < name[l+1]:
-					name[l+1], name[l] = name[l], name[l 1]
+					name[l+1], name[l] = name[l], name[l-1]
 
 x = []
 y = []
@@ -19,8 +19,7 @@ for i in range(rooms):
 	quan += players
 	for j in range(players):
 		x, y = input().split()
-		x = float(x)
-		point.append(x)
+		point.append(float(x))
 		name.append(y)
 N = len(point)
 bubble_sort(point)
