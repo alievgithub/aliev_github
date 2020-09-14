@@ -1,2 +1,2 @@
 # aliev_github
-MIPT System Analysis and Management student
+MIPT and RANEPA System Analysis and Economics student
