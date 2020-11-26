@@ -21,6 +21,8 @@ int main() {
         }
       } else if (word == "WORRY") {
         queue[num] = 1;
+      } else if (word == "QUIET") {
+        queue[num] = 0;
       }
     } else {
       res = 0;
