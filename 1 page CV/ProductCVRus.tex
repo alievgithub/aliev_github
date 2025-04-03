@@ -1,0 +1,237 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% modern themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+% 1. Явно задаем шрифты ДО русского языка
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault} % critical for moderncv
+
+% 2. Настройки русского языка с ручным управлением шрифтами
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian,english]{babel}
+
+% 3. Фикс для babel (предотвращает сброс шрифтов)
+\usepackage{etoolbox}
+\AfterEndPreamble{
+  \fontfamily{lmss}\selectfont % принудительно устанавливаем moderncv шрифт
+  \selectlanguage{russian} % активируем русский
+}
+
+
+\usepackage{fontawesome}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+% if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.925]{geometry}
+\usepackage{multicol}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\usepackage{import}
+
+
+\setlength\tabcolsep{10pt}
+
+\patchcmd{\makehead}% <cmd>
+  {\setlength{\makeheaddetailswidth}{0.8\textwidth}}% <search>
+  {\setlength{\makeheaddetailswidth}{0.9\textwidth}}% <replace>
+  {}{}% <success><failure>
+
+\patchcmd{\makehead}% <cmd>
+  {\\[2.5em]}% <search>
+  {\hfill\raisebox{-0,8cm}[0pt][0pt]{\includegraphics[width=.10\textwidth]{photo.jpg}}\\[2.5em]}% <replace>
+  {}{}% <success><failure>
+
+% personal data
+\name{Артем}{Алиев}
+% \title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
+\address{Менеджер продукта}{}{}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+% \phone[mobile]{909-839-3097}                   % optional, remove / comment the line if not wanted
+% \phone[fixed]{01234 123456}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+% \email{xpan1@swarthmore.edu}                               % optional, remove / comment the line if not wanted
+% \homepage{shawnpan.me}                         % optional, remove / comment the line if not wanted
+%\extrainfo{}                 % optional, remove / comment the line if not wanted
+
+%\photo[64pt][0.4pt]{photo}                  % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+  
+\newcommand*{\customcventry}[7][.25em]{
+  \begin{tabular}{@{}l} 
+    {\bfseries #4}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\bfseries #5}
+  \end{tabular} \\
+  \begin{tabular}{@{}l} 
+    {\itshape #3}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #2}
+  \end{tabular}
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\newcommand*{\customcvproject}[4][.25em]{
+%   \vfill\noindent
+  \begin{tabular}{@{}l} 
+    {\bfseries #2}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #3}
+  \end{tabular}
+  \ifx&#4&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#4%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\setlength{\tabcolsep}{12pt}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\vspace*{-23mm}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+\faLinkedin\enspace \href{https://www.linkedin.com/in/alievlin}{alievlin} &
+\faGithub\enspace \href{https://github.com/alievgithub}{alievgithub} & \faEnvelopeO\enspace alievae0410@gmail.com &  \faMobile\enspace +7-964-585-6317
+
+\end{tabular}
+\end{center}
+
+\section{О СЕБЕ}
+\begin{minipage}{\maincolumnwidth}
+\small Ориентированный на результат продуктовый менеджер с опытом разработки облачных продуктов в IT (PaaS и SaaS) и взаимодействия с пользователями. Занимался увеличением таких метрик Retention, MAU, Churn Rate, а также общей удовлетворенности пользователей. Также имею опыт маркетинге, стратегическом и исследовательском консалтинге.
+\end{minipage}
+
+\section{ОПЫТ}
+{\customcventry{Окт 2023 - Настоящее время (1 год 7 мес)}{Менеджер по маркетингу и продукту}{Фирма 1С}{Москва, Россия}{}
+{\begin{itemize}
+\item Управлял дорожной картой продукта 1С:Предприятие.Элемент, устанавливал задачи на основе потребностей клиентов.
+\item Взаимодействовал с клиентами для сбора обратной связи и внедрения улучшений,
+повысил удовлетворенность на 30\%.
+\item Выступал на конференциях по стратегиям монетизации продукции и привлечению новых
+партнеров.
+\item Создавал отчеты для анализа активности пользователей, благодаря которым были выстроены стартегии развития продутка, что в последствии повысило удержание пользователей на 85\% в публичной бете.
+\end{itemize}
+}
+}
+
+{\customcventry{Апр 2023 - Авг 2023 (5 мес)}{Стратегический аналитик-исследователь}{Департамент специальных проектов при госкорпорации}{Москва, Россия}{}
+{\begin{itemize}
+\item Проводил исследования в области экономики, геополитики, индустриального сектора, технологий и ESG.
+\item Управлял проектами и разработал стратегии по прогнозированию экономических рынков до 2035 года.
+\item Занимался мониторингом интернета, СМИ, публикаций, нормативных документов по темам устойчивого и социально-экономического развития по предметным запросам руководства
+\end{itemize}
+}
+}
+
+{\customcventry{Ноя 2022 - Фев 2023 (4 мес)}{Консультант по стратегии}{BIC Group (бывш. Roland Berger)}{Москва, Россия}{}
+{\begin{itemize}
+\item Оптимизировал бизнес-процессы, снизил затраты за счет сокращения штата на 4\% без потери производительности.
+\item Разработал гипотезы по реинжинирингу процессов, сокращающии время выполнения задач на 12\%.
+\end{itemize}
+}
+}
+
+{\customcventry{Окт 2021 - Сен 2022 (1 год)}{Младший консультант в отделе эффективности маркетинга}{Nielsen Media}{Москва, Россия}{}
+{\begin{itemize}
+\item Вел собственные проекты по оценке эффективности маркетинговых кампаний в сфере FMCG, используя регрессию.
+\item Повышал ROI рекламных кампаний на 5-8\% для крупных брендов за счет сокращения и перераспределения бюджетов.
+\item Работал с международными командами и клиентами на английском языке, презентуя результаты и рекомендации по улучшению марктеинговой стратегии.
+\end{itemize}
+}
+}
+
+{\customcventry{Апр 2021 - Июл 2021 (4 мес)}{Стажер в отделе компенсаций и льгот}{Sanofi}{Москва, Россия}{}
+{\begin{itemize}
+\item Участвовал в тендерах со страховыми компаниями, оптимизируя расходы на ДМС.
+\item Анализировал большие объемы данных по компенсациям и льготам сотрудников, строил дашборды в Excel.
+\end{itemize}
+}
+}
+
+\section{НАВЫКИ}
+\begin{itemize}
+\item \textbf{Управление продуктом}: Исследование продукта и пользователей, A/B-тестирование, разработка продукта на основе данных, управление проектами по методике Agile, сотрудничество и коммуникация со стейкхолдерами.
+\item \textbf{Аналитика продукта}: Улучшение метрик (ROI, эффективность и др.), Оптимизация бизнес-процессов.
+\item \textbf{Инструменты:} Excel, Word, PP, 1C:Analytics, 1C:Enterprise.Element, Jira, Confluence, Visio, Nielsen Answers.
+\end{itemize}
+
+\section{ОБРАЗОВАНИЕ}
+{\customcventry{2023 - 2025}{Магистратура; Физтех-школа ФПМИ; Бизнес-информатика (Сред. балл: 4.4/5.0)}{Московский физико-технический институт}{Москва, Россия}{}{}}
+{\customcventry{2019 - 2023}{Бакалавриат; Физтех-школа ФАКТ; Системный анализ и управление (Сред. балл: 4.2/5.0)}{Московский физико-технический институт}{Москва, Россия}{}{}}
+{\customcventry{2019 - 2022}{Неоконченный бакалавриат; Институт ЭМИТ; Экономика (Сред. балл: 4.0/5.0)}{Российская академия народного хозяйства и государственной службы}{Москва, Россия}{}{}}
+
+\section{УНИВЕРСИТЕТСКИЕ КОМАНДНЫЕ ПРОЕКТЫ}
+{
+  {\begin{itemize}
+  \item \href{https://disk.yandex.com/d/EUMrDL89-MqzmQ}{Разработали приложение для создания отчетов о ходе выполнения спринта на 1С:Предприятие.Элемент.}
+  \item \href{https://github.com/alievgithub/SpeechRecognitionBot}{Работали над телеграм-ботом для поиска музыкальных композиций с распознаванием речи на Python.}
+  \end{itemize}
+  }
+}
+
+
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+%-----       letter       ---------------------------------------------------------
+
+\end{document}
+
+
+%% end of file `template.tex'.
